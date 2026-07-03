@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "sweetprompt",
+  "displayName": "SweetPrompt",
   "description": "Compile a rough, messy, or underspecified prompt into a precise, codebase-grounded Claude Code prompt — without executing it or editing code. Invoked via /sweetprompt:sweetprompt.",
   "version": "0.1.0",
   "author": {

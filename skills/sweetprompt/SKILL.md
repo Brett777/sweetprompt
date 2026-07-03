@@ -11,7 +11,7 @@ disable-model-invocation: true
 argument-hint: "[your rough prompt to sharpen]"
 ---
 
-# sweetprompt
+# SweetPrompt
 
 Turn the user's rough prompt into an excellent Claude Code prompt. Your output
 is the rewritten prompt itself — you are a prompt compiler, not the executor.

@@ -1,12 +1,12 @@
-# sweetprompt
+# SweetPrompt
 
 **Compile a rough prompt into a precise, codebase-grounded Claude Code prompt — without executing it.**
 
-`sweetprompt` is a Claude Code skill that turns a rough, half-formed request into a precise, codebase-grounded prompt. You give it your first-draft ask — typos, vagueness, half-thoughts and all — and it reads your real codebase, works out what you actually mean and which files it touches, and returns a clean, specific, file-aware prompt that's ready to run. It never edits code or runs the task — **the rewritten prompt is the deliverable.**
+SweetPrompt is a Claude Code skill that turns a rough, half-formed request into a precise, codebase-grounded prompt. You give it your first-draft ask — typos, vagueness, half-thoughts and all — and it reads your real codebase, works out what you actually mean and which files it touches, and returns a clean, specific, file-aware prompt that's ready to run. It never edits code or runs the task — **the rewritten prompt is the deliverable.**
 
 ## Why run it first?
 
-A vague prompt makes Claude Code guess — and wrong guesses cost you turns. It hunts for the wrong file, opens with a round of clarifying questions, or confidently builds the wrong thing, and you spend the next few messages steering it back. `sweetprompt` front-loads that work: a few seconds turning your idea into a precise spec so Claude gets it right on the first pass instead of the third.
+A vague prompt makes Claude Code guess — and wrong guesses cost you turns. It hunts for the wrong file, opens with a round of clarifying questions, or confidently builds the wrong thing, and you spend the next few messages steering it back. SweetPrompt front-loads that work: a few seconds turning your idea into a precise spec so Claude gets it right on the first pass instead of the third.
 
 - **Right files, first try.** It greps your actual code and cites only paths it has verified, so Claude doesn't burn a turn hunting for "the login thing."
 - **No clarifying-question ping-pong.** Ambiguities get resolved up front — or surfaced as explicit assumptions you can confirm — instead of interrupting you mid-task.

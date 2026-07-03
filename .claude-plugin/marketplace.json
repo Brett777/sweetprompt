@@ -1,6 +1,6 @@
 {
   "name": "sweetprompt-marketplace",
-  "description": "Prompt-engineering tools for Claude Code, starting with sweetprompt.",
+  "description": "Prompt-engineering tools for Claude Code, starting with SweetPrompt.",
   "owner": {
     "name": "Brett Olmstead",
     "email": "olmsteadbrett@gmail.com"
