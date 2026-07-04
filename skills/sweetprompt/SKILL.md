@@ -62,6 +62,9 @@ the user's most recent message as the rough prompt.
 - Constraints / out-of-scope explicit ("don't touch X").
 - Right altitude: specific enough to steer, not so rigid it over-constrains.
 - No invented requirements. The user's original intent is preserved.
+- If grounding contradicts the premise (the thing is already handled, lives
+  elsewhere, or can't work as described), say so in `Changed:` / `Open Q:` —
+  don't silently encode a false assumption.
 
 ## Ambiguity
 
@@ -86,6 +89,12 @@ Then end with exactly: **Reply `go` to run this, or tell me what to adjust.**
 
 For a trivial rewrite, the block alone is enough — omit both footer lines.
 
+**When you can't responsibly rewrite yet** — a false premise, a named target
+that doesn't exist, a blocking ambiguity, or an impossible ask — skip the
+Improved-prompt block. Instead reply in 2–4 lines: what's wrong (cite the
+file/line that contradicts the premise) and the one thing you need to
+proceed. Never build a rewrite around a broken assumption.
+
 ## Edge cases
 
 - **No codebase:** focus on clarity, structure, and stated assumptions.
@@ -93,3 +102,6 @@ For a trivial rewrite, the block alone is enough — omit both footer lines.
   do not answer it.
 - **Prompt is already strong:** say so and make only light touch-ups — don't
   pad it.
+- **No prompt at all:** if there's nothing to sharpen (no argument and no
+  usable prior message), ask for the rough prompt in one line — don't emit an
+  empty block or invent a task.
