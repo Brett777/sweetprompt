@@ -56,13 +56,17 @@ You get back a polished, ready-to-run prompt plus a short note on what changed:
 ```
 ──✦  Sweetened Prompt  ────────────────────────────
 
-Add retry logic to the login request in src/auth/login.ts. Wrap the
-fetch in `signIn()` to retry up to 3× on network/5xx errors with
-exponential backoff; do not retry on 401/403. Done when a flaky
-network recovers within 3 attempts and auth failures still surface.
+**Goal** — Make `signIn()` in `src/auth/login.ts` resilient to flaky networks.
+
+**Change** — Wrap the `fetch` call to retry up to 3× on network/5xx errors
+with exponential backoff. Do **not** retry on `401`/`403`.
+
+**Done when**
+- [ ] A flaky network recovers within 3 attempts
+- [ ] Auth failures (`401`/`403`) still surface immediately
 
 ────────────────────────────────────────────────────
-  Grounded ·  src/auth/login.ts · signIn() at :42
+  Grounded ·  `src/auth/login.ts` · `signIn()` at :42
 ```
 
 Reply `go` to run it, or tell it what to adjust; the Sweetened Prompt is

@@ -3,7 +3,7 @@
   "name": "sweetprompt",
   "displayName": "SweetPrompt",
   "description": "Compile a rough, messy, or underspecified prompt into a precise, codebase-grounded Claude Code prompt — without executing it or editing code. Invoked via /sweetprompt:sweetprompt.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Brett Olmstead",
     "email": "olmsteadbrett@gmail.com"
