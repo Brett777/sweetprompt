@@ -77,6 +77,28 @@ symbols SweetPrompt actually verified in your code. Wrong file? Say so; any
 adjustment re-emits the complete updated prompt, so the latest block is
 always exactly what `go` will run.
 
+## The quick pass: `/sweetprompt:quick`
+
+Sometimes you don't need grounding at all — you just want your half-formed idea
+cleaned up before you send it. The quick pass is a pure rewrite:
+
+```
+/sweetprompt:quick also we should make the export thing do csv not just pdf and keep pdf
+```
+
+Quick reorganizes the ideas, clarifies the wording, connects the dots, and
+names things precisely — working **only from your prompt and the conversation**.
+It never reads your codebase, so it's the fastest pass and returns almost
+immediately. Because it can't verify anything, it stays conservative: it won't
+invent file names, and anything it infers is flagged as an assumption in
+`Open Q` for you to confirm.
+
+Two things you get for near-zero cost: a moment to reflect on what you actually
+typed, and a second set of eyes that catches gaps before the prompt runs — a
+2-shot boost on the way to `go`. Reach for it when the wording is the problem,
+not the target files; reach for `/sweetprompt:sweetprompt` when the prompt needs
+to know *where* the work lives.
+
 ## The deep pass: `/sweetprompt:deep`
 
 The default command is deliberately cheap: pinned to Sonnet at medium effort,
@@ -109,9 +131,9 @@ Rough in → sharp out, across the kinds of work where a vague prompt costs the 
 
 ## How it works
 
-- Runs on **Sonnet** at **medium effort**: fast and cheap; reverts to your session model when you run the result, so execution happens on your normal model. The optional deep pass (`/sweetprompt:deep`) instead runs on your session model at high effort for tasks that earn it.
-- **Read-only** (`Read`, `Grep`, `Glob`, `Agent`): it structurally cannot edit your code.
-- **Explicit invocation only** (`/sweetprompt:sweetprompt` or `/sweetprompt:deep`): never auto-triggers, so it won't hijack a prompt you meant to execute.
+- Runs on **Sonnet** at **medium effort**: fast and cheap; reverts to your session model when you run the result, so execution happens on your normal model. The quick pass (`/sweetprompt:quick`) runs on Sonnet at low effort with no codebase reads at all; the deep pass (`/sweetprompt:deep`) runs on your session model at high effort for tasks that earn it.
+- **Read-only** (`Read`, `Grep`, `Glob`, `Agent`): it structurally cannot edit your code. The quick pass uses **no tools at all** — it's a pure rewrite from context.
+- **Explicit invocation only** (`/sweetprompt:sweetprompt`, `/sweetprompt:quick`, or `/sweetprompt:deep`): never auto-triggers, so it won't hijack a prompt you meant to execute.
 - Grounds file references against your real code and only cites paths it has verified; fans out to read-only `Explore` agents only for large, multi-subsystem repos.
 
 ## SweetPrompt vs plan mode
@@ -134,9 +156,9 @@ Most prompt tools rewrite your **words**: cleaner grammar, tighter structure, a 
 
 SweetPrompt is built to be safe to install and hard to let loose:
 
-- **Read-only by design.** Both commands share the same tools: `Read`, `Grep`, `Glob`, and `Agent`. `Agent` is used only to spawn read-only `Explore` subagents. It searches and reads your code; it does not edit files or run shell commands, and producing the rewritten prompt is its terminal action.
-- **No background surface.** No MCP servers, no hooks, no bundled executables, no network calls, no install scripts. It adds ~200 tokens to a session (one short description per command) and nothing else.
-- **Explicit invocation only.** It never auto-triggers; it runs only when you type `/sweetprompt:sweetprompt` or `/sweetprompt:deep`, so it can't hijack a prompt you meant to execute.
+- **Read-only by design.** The grounded commands (`/sweetprompt:sweetprompt` and `/sweetprompt:deep`) share the same tools: `Read`, `Grep`, `Glob`, and `Agent`. `Agent` is used only to spawn read-only `Explore` subagents. They search and read your code; they do not edit files or run shell commands. The quick pass (`/sweetprompt:quick`) uses **no tools at all** — it only reads your prompt and rewrites it. Producing the rewritten prompt is the terminal action for every command.
+- **No background surface.** No MCP servers, no hooks, no bundled executables, no network calls, no install scripts. It adds ~300 tokens to a session (one short description per command) and nothing else.
+- **Explicit invocation only.** It never auto-triggers; it runs only when you type `/sweetprompt:sweetprompt`, `/sweetprompt:quick`, or `/sweetprompt:deep`, so it can't hijack a prompt you meant to execute.
 - **Text is the only output.** The deliverable is the rewritten prompt. Running it is a separate step you initiate, on your normal session model.
 
 ## Privacy

@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "sweetprompt",
   "displayName": "SweetPrompt",
-  "description": "Compile a rough, messy, or underspecified prompt into a precise, codebase-grounded Claude Code prompt — without executing it or editing code. Invoked via /sweetprompt:sweetprompt; deep pass via /sweetprompt:deep.",
-  "version": "0.4.0",
+  "description": "Compile a rough, messy, or underspecified prompt into a precise, codebase-grounded Claude Code prompt — without executing it or editing code. Invoked via /sweetprompt:sweetprompt; quick pass via /sweetprompt:quick, deep pass via /sweetprompt:deep.",
+  "version": "0.5.0",
   "author": {
     "name": "Brett Olmstead",
     "email": "olmsteadbrett@gmail.com"
