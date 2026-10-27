@@ -9,7 +9,7 @@
     {
       "name": "sweetprompt",
       "source": ".",
-      "description": "Compile a rough prompt into a precise, codebase-grounded Claude Code prompt — without executing it."
+      "description": "Compile a rough prompt into a precise, codebase-grounded Claude Code prompt, without executing it. Three passes: quick, default, deep."
     }
   ]
 }
